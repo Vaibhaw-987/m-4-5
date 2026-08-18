@@ -1,7 +1,7 @@
 import {
   ExternalLink,
   Link2,
-  Loader2,
+  Loader2, 
   Sparkles,
   WalletCards,
 } from "lucide-react";
