@@ -3,7 +3,7 @@ interface CrescentMarkProps {
   title?: string;
 }
 
-export function CrescentMark({ className, title }: CrescentMarkProps) {
+export function CrescentMark({ className, title }: CrescentMarkProps) { 
   return (
     <svg
       aria-hidden={title ? undefined : true}
