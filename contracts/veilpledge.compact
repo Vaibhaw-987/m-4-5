@@ -1,0 +1,71 @@
+// VeilPledge: privacy-preserving accountability on Midnight.
+//
+// The pledge text is intentionally public. Ownership remains private: the
+// ledger stores only a round-specific commitment derived from a local secret.
+// The same secret must be proven in zero knowledge to complete the pledge.
+
+pragma language_version 0.23;
+
+import CompactStandardLibrary;
+
+export enum PledgeState {
+  OPEN,
+  ACTIVE
+}
+
+export ledger state: PledgeState;
+
+export ledger goal: Maybe<Opaque<"string">>;
+
+export ledger sequence: Counter;
+
+export ledger ownerCommitment: Bytes<32>;
+
+export ledger completionCount: Counter;
+
+// The raw secret is supplied from encrypted local private state. It is never
+// disclosed or written to the public ledger.
+witness localSecretKey(): Bytes<32>;
+
+constructor() {
+  state = PledgeState.OPEN;
+  goal = none<Opaque<"string">>();
+  sequence.increment(1);
+}
+
+export circuit createPledge(newGoal: Opaque<"string">): [] {
+  assert(state == PledgeState.OPEN, "An active pledge already exists");
+
+  ownerCommitment = disclose(
+    deriveOwner(localSecretKey(), sequence as Field as Bytes<32>)
+  );
+  goal = disclose(some<Opaque<"string">>(newGoal));
+  state = PledgeState.ACTIVE;
+}
+
+export circuit completePledge(): Opaque<"string"> {
+  assert(state == PledgeState.ACTIVE, "Cannot complete an empty pledge board");
+  assert(
+    ownerCommitment ==
+      deriveOwner(localSecretKey(), sequence as Field as Bytes<32>),
+    "Only the pledge creator can complete it"
+  );
+
+  const completedGoal = goal.value;
+  state = PledgeState.OPEN;
+  goal = none<Opaque<"string">>();
+  sequence.increment(1);
+  completionCount.increment(1);
+  return completedGoal;
+}
+
+export circuit deriveOwner(
+  secretKey: Bytes<32>,
+  sequenceBytes: Bytes<32>
+): Bytes<32> {
+  return persistentHash<Vector<3, Bytes<32>>>([
+    pad(32, "veilpledge:owner:"),
+    sequenceBytes,
+    secretKey
+  ]);
+}

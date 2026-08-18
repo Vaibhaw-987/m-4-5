@@ -1,0 +1,12 @@
+> veilpledge@1.0.0 test:e2e
+> tsx scripts/e2e-check.ts --network preview
+
+PASS e2e-check passed
+   contractAddress: 03a38b13de46c09f93621bbbc97ff537bada6f341066750a42de5a60e0985a39
+   network:         preview
+   pledgeState:     OPEN
+   sequence:        1
+   completions:     0
+   deploymentTx:    e5495322fad11d200849f5be76d8b475b4019f8331bd4318a5a5a8a9fc996ab2
+   deploymentBlock: 1545814
+   deploymentProof: Preview indexer verified

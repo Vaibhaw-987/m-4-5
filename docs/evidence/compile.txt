@@ -1,0 +1,7 @@
+> veilpledge@1.0.0 compile
+> compact compile contracts/veilpledge.compact contracts/managed/veilpledge
+
+Compiling 2 circuits:
+  circuit "completePledge" (k=13, rows=4580)
+  circuit "createPledge" (k=13, rows=4569)
+Overall progress [====================] 2/2

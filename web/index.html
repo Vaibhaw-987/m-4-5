@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#06111f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-eval' 'wasm-unsafe-eval'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self' http://localhost:6300 http://127.0.0.1:6300 https://proof-server.preprod.midnight.network wss://proof-server.preprod.midnight.network https://indexer.preprod.midnight.network wss://indexer.preprod.midnight.network https://rpc.preprod.midnight.network wss://rpc.preprod.midnight.network; object-src 'none'; base-uri 'self'; form-action 'self'"
+    />
+    <meta name="referrer" content="no-referrer" />
+    <meta
+      name="description"
+      content="Publish a public pledge and later prove ownership without revealing your private secret."
+    />
+    <title>VeilGate: private allowlist access on Midnight</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,125 @@
+// VeilGate: private allowlist access on Midnight.
+//
+// An organizer publishes only commitments to an allowlist. A member proves
+// "I am on the list" in zero knowledge without revealing which entry they are.
+// A domain-separated, epoch-scoped nullifier makes each access one-time
+// without linking uses to an identity.
+//
+// Public: the commitment tree root, the member and check-in counts, the
+// current epoch, and one nullifier per use.
+// Private: the member secret, which entry of the list a prover matched, and
+// the link between two check-ins by the same member across epochs.
+
+pragma language_version 0.23;
+
+import CompactStandardLibrary;
+
+// 2^10 = 1024 member commitments. The proposal starts from a bounded list;
+// the depth is the only value that has to change to grow it.
+export ledger members: MerkleTree<10, Bytes<32>>;
+
+// Zero until an organizer claims the deployment.
+export ledger organizerCommitment: Bytes<32>;
+
+// Spent nullifiers. A nullifier is epoch-scoped, so rotating the epoch
+// re-admits every member without revealing who any of them are.
+export ledger spent: Set<Bytes<32>>;
+
+export ledger epoch: Counter;
+
+export ledger memberCount: Counter;
+
+export ledger checkinCount: Counter;
+
+// Supplied from encrypted local private state. Never disclosed, never written
+// to the public ledger.
+witness localSecretKey(): Bytes<32>;
+
+// The caller's own Merkle path, resolved locally from the public tree.
+witness memberPath(): MerkleTreePath<10, Bytes<32>>;
+
+constructor() {
+  epoch.increment(1);
+}
+
+// The first caller becomes the organizer for this deployment.
+export circuit claimOrganizer(): [] {
+  assert(
+    organizerCommitment == default<Bytes<32>>,
+    "This deployment already has an organizer"
+  );
+  organizerCommitment = disclose(deriveOrganizer(localSecretKey()));
+}
+
+// The organizer adds a member commitment. The commitment is public by
+// construction; the secret behind it never leaves the member's browser.
+export circuit registerMember(commitment: Bytes<32>): [] {
+  assert(
+    organizerCommitment == deriveOrganizer(localSecretKey()),
+    "Only the organizer can register members"
+  );
+  members.insert(disclose(commitment));
+  memberCount.increment(1);
+}
+
+// Prove membership and check in. Reveals only that some valid member checked
+// in, plus the nullifier that stops them doing it twice this epoch.
+export circuit proveMembership(): Bytes<32> {
+  const secret = localSecretKey();
+  const path = memberPath();
+
+  // Bind the path to this caller's own commitment. Without this a caller
+  // could replay any other member's path and check in as them.
+  assert(
+    path.leaf == deriveCommitment(secret),
+    "That path does not match your commitment"
+  );
+  assert(
+    members.checkRoot(disclose(merkleTreePathRoot<10, Bytes<32>>(path))),
+    "You are not on the allowlist"
+  );
+
+  const nullifier = disclose(
+    deriveNullifier(secret, epoch as Field as Bytes<32>)
+  );
+  assert(!spent.member(nullifier), "You have already checked in this epoch");
+
+  spent.insert(nullifier);
+  checkinCount.increment(1);
+  return nullifier;
+}
+
+// Rotating the epoch invalidates every existing nullifier, so members can
+// check in again in the next period without the two uses being linkable.
+export circuit rotateEpoch(): [] {
+  assert(
+    organizerCommitment == deriveOrganizer(localSecretKey()),
+    "Only the organizer can rotate the epoch"
+  );
+  epoch.increment(1);
+}
+
+export circuit deriveCommitment(secret: Bytes<32>): Bytes<32> {
+  return persistentHash<Vector<2, Bytes<32>>>([
+    pad(32, "veilgate:member:"),
+    secret
+  ]);
+}
+
+export circuit deriveOrganizer(secret: Bytes<32>): Bytes<32> {
+  return persistentHash<Vector<2, Bytes<32>>>([
+    pad(32, "veilgate:organizer:"),
+    secret
+  ]);
+}
+
+export circuit deriveNullifier(
+  secret: Bytes<32>,
+  epochBytes: Bytes<32>
+): Bytes<32> {
+  return persistentHash<Vector<3, Bytes<32>>>([
+    pad(32, "veilgate:nullifier:"),
+    epochBytes,
+    secret
+  ]);
+}

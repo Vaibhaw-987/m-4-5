@@ -1,0 +1,8 @@
+{
+  "version": 3,
+  "file": "index.js",
+  "sourceRoot": "../../../../",
+  "sources": ["contracts/veilpledge.compact", "compiler/standard-library.compact"],
+  "names": [],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;EA6BA;;;;;;;;;;;;;MAMA,AAAA,YAQC;;;;;cAR2B,SAAyB;;;;;;;;;;;yCAAzB,SAAyB;;;;;;;;;8CAAzB,SAAyB;;;OAQpD;MAED,AAAA,cAcC;;;;;;;;;;;;;;;;;;;;;;OAAA;MAED,AAAA,WASC;;OAAA;;;;;;;;;;GArCA;EAJD;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAdA;;;;;;;;;yEAAiC;IAEjC;;;;;;;;;yEAA4C;IAE5C;;;;;;;;;yEAAgC;IAEhC;;;;;;;;;yEAAyC;IAEzC;;;;;;;;;yEAAuC;IAOrC;;;;;;;;;yEAAK;UACL,KAAI;IAAJ;;;;;;;2HAAA,KAAI;;yEAAA;UACJ,KAAQ;IAAR;;;;;;;;;;6FAAA,KAAQ;;;;wEAAA;;;;;;;GACT;ECVD,AAAA,QAAuB,0CACkB;EAGzC,AAAA;EA3BA,AAAA,kBAAA;oEAAA;;;ED2BA,AAAA,iBAAoC;;0DAApC,cAAoC;;;;;;;;;;;;;;GAAA;EAQpC,AAAA,eAQC,4BAR2B,SAAyB;oDAC5C;;;;;;;;;;;yHAAK;;;;UAEZ,KAAe;;;mGACiB;;;;;;;;;;;wKAAQ;;IADxC;;;;;;;2HAAA,KAAe;;yEAAA;UAGf,KAAI,gBAAmC,SAAO;IAA9C;;;;;;;2HAAA,KAAI;;yEAAA;IACJ;;;;;;;;;yEAAK;;GACN;EAED,AAAA,iBAcC;oDAbQ;;;;;;;;;;;yHAAK;;;;kEAEV;;;;;;;;;;;uIAAe;;;;2HACiB;;;;;;;;;;;gMAAQ;;;UAIpC,eAA0B,2BAAV;;;;;;;;;;;yHAAI;IAC1B;;;;;;;;;yEAAK;UACL,KAAI;IAAJ;;;;;;;2HAAA,KAAI;;yEAAA;UACJ,KAAQ;IAAR;;;;;;;;;;6FAAA,KAAQ;;;;wEAAA;UACR,KAAe;IAAf;;;;;;;;;;6FAAA,KAAe;;;;wEAAA;WACR,eAAa;GACrB;EAED,AAAA,cASC,CARC,WAAoB,EACpB,eAAwB;;mCAItB,eAAa;mCACb,WAAS;GAEZ;;;;;;;;;;;;;;;;;;;;IAvDD;qCAAA;;;;;;;;;;;0GAAiC;KAAA;IAEjC;qCAAA;;;;;;;;;;;0GAA4C;KAAA;IAE5C;qCAAA;;;;;;;;;;;0GAAgC;KAAA;IAEhC;qCAAA;;;;;;;;;;;0GAAyC;KAAA;IAEzC;qCAAA;;;;;;;;;;;0GAAuC;KAAA;;;;;;;;EAsCvC,AAAA,WASC;;;;UARC,WAAoB;UACpB,eAAwB;;;;;;;;;;;;;;;yCADxB,WAAoB,EACpB,eAAwB;GAOzB;;;;"
+}
