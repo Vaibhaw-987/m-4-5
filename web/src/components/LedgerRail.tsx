@@ -3,7 +3,7 @@ import {
   Fingerprint,
   Grid2X2,
   Hash,
-  List,
+  List, 
 } from "lucide-react";
 
 import type { LedgerSnapshot } from "../types";
