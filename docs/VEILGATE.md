@@ -1,4 +1,4 @@
-# VeilGate: private allowlist access
+# VeilGate: private allowlist access 
 
 VeilGate is the Level 4 MVP described in [proposal.md](proposal.md). An
 organizer publishes only a commitment to an allowlist. A member proves *"I am
