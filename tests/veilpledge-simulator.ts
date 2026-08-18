@@ -1,7 +1,7 @@
 import {
   CostModel,
   type CircuitContext,
-  QueryContext,
+  QueryContext, 
   convertFieldToBytes,
   createConstructorContext,
   sampleContractAddress,
