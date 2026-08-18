@@ -1,6 +1,6 @@
 import { randomBytes } from 'node:crypto';
 import { describe, expect, it } from 'vitest';
-import { setNetworkId } from '@midnight-ntwrk/midnight-js-network-id';
+import { setNetworkId } from '@midnight-ntwrk/midnight-js-network-id'; 
 import { PledgeState } from '../contracts/managed/veilpledge/contract/index.js';
 import { resolvePrivateStatePassword } from '../src/private-state.js';
 import { VeilPledgeSimulator } from './veilpledge-simulator.js';
