@@ -1,7 +1,7 @@
 import { AlertTriangle, Info, ShieldAlert, Unplug } from "lucide-react";
 
 import type { WalletNoticeKind } from "../types";
-
+ 
 interface WalletNoticeProps {
   kind: WalletNoticeKind;
   title?: string;
