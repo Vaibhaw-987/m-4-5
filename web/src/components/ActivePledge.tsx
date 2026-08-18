@@ -1,6 +1,6 @@
 import {
   CheckCircle2,
-  Loader2,
+  Loader2, 
   LockKeyhole,
   ShieldCheck,
 } from "lucide-react";
