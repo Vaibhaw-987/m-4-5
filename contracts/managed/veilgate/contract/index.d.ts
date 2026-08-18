@@ -1,5 +1,5 @@
 import type * as __compactRuntime from '@midnight-ntwrk/compact-runtime';
-
+ 
 export type Witnesses<PS> = {
   localSecretKey(context: __compactRuntime.WitnessContext<Ledger, PS>): [PS, Uint8Array];
   memberPath(context: __compactRuntime.WitnessContext<Ledger, PS>): [PS, { leaf: Uint8Array,
