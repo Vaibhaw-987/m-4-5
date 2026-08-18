@@ -11,7 +11,7 @@ import { resolveNetwork, getOrCreateSeed, recordDeployment, type NetworkId } fro
 import { createWallet, persistWalletState, unshieldedToken, type WalletContext } from './wallet';
 import { WebSocket } from 'ws';
 import * as Rx from 'rxjs';
-import { resolvePrivateStatePassword } from './private-state';
+import { resolvePrivateStatePassword } from './private-state'; 
 import { deploymentRecordFile, resolveDeployTarget } from './deploy-target';
 
 // Midnight SDK imports
