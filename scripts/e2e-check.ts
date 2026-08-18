@@ -1,6 +1,6 @@
 /**
  * Public end-to-end verification for a deployed VeilPledge contract.
- *
+ * 
  * This intentionally needs no wallet seed, private state, signing key, or
  * proof server, so reviewers can run it from a clean clone. The address comes
  * from --contract-address, MIDNIGHT_CONTRACT_ADDRESS, local gitignored state,
