@@ -1,6 +1,6 @@
 import { CompiledContract } from "@midnight-ntwrk/midnight-js-protocol/compact-js";
 import type { WitnessContext } from "@midnight-ntwrk/midnight-js-protocol/compact-runtime";
-import type { FoundContract } from "@midnight-ntwrk/midnight-js-contracts";
+import type { FoundContract } from "@midnight-ntwrk/midnight-js-contracts"; 
 import type { MidnightProviders } from "@midnight-ntwrk/midnight-js-types";
 
 import * as VeilPledge from "../generated/veilpledge/index.js";
