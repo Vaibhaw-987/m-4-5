@@ -7,7 +7,7 @@ import { WebSocket } from 'ws';
 import { Buffer } from 'buffer';
 
 // Midnight SDK imports
-import { findDeployedContract } from '@midnight-ntwrk/midnight-js-contracts';
+import { findDeployedContract } from '@midnight-ntwrk/midnight-js-contracts'; 
 import { httpClientProofProvider } from '@midnight-ntwrk/midnight-js-http-client-proof-provider';
 import { indexerPublicDataProvider } from '@midnight-ntwrk/midnight-js-indexer-public-data-provider';
 import { levelPrivateStateProvider } from '@midnight-ntwrk/midnight-js-level-private-state-provider';
