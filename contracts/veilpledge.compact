@@ -1,4 +1,4 @@
-// VeilPledge: privacy-preserving accountability on Midnight.
+// VeilPledge: privacy-preserving accountability on Midnight. 
 //
 // The pledge text is intentionally public. Ownership remains private: the
 // ledger stores only a round-specific commitment derived from a local secret.
