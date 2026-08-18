@@ -1,5 +1,5 @@
 import {
-  CostModel,
+  CostModel, 
   type CircuitContext,
   QueryContext,
   createConstructorContext,
