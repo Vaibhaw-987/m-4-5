@@ -1,5 +1,5 @@
 /**
- * Adversarial tests for VeilGate.
+ * Adversarial tests for VeilGate. 
  *
  * The honest client resolves the caller's own Merkle path, so the ordinary
  * tests never exercise a forged one. A real attacker controls their client and
