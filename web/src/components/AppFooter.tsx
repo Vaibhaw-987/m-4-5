@@ -8,7 +8,7 @@ export function AppFooter() {
     <footer className="app-footer">
       <p className="app-footer__prompt">
         Used VeilPledge on Preprod?{" "}
-        <a href={FEEDBACK_URL} rel="noreferrer noopener" target="_blank">
+        <a href={FEEDBACK_URL} rel="noreferrer noopener" target="_blank"> 
           Tell us what happened
         </a>
         .
